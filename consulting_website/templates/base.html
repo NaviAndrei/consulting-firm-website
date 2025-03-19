@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Consulting Firm{% endblock %}</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="{% block meta_description %}Professional consulting services for business growth and transformation.{% endblock %}">
+    <link rel="canonical" href="{% block canonical_url %}{{ request.build_absolute_uri }}{% endblock %}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}" data-aos="fade-right">
+                    <img src="{% static 'images/logo.png' %}" alt="Consulting Firm Logo" height="40">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item" data-aos="fade-down" data-aos-delay="100">
+                            <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="nav-item" data-aos="fade-down" data-aos-delay="150">
+                            <a class="nav-link {% if 'services' in request.path %}active{% endif %}" href="{% url 'service_list' %}">Services</a>
+                        </li>
+                        <li class="nav-item" data-aos="fade-down" data-aos-delay="200">
+                            <a class="nav-link {% if 'about' in request.path %}active{% endif %}" href="{% url 'about' %}">About Us</a>
+                        </li>
+                        <li class="nav-item" data-aos="fade-down" data-aos-delay="250">
+                            <a class="nav-link {% if 'testimonials' in request.path %}active{% endif %}" href="{% url 'testimonials' %}">Testimonials</a>
+                        </li>
+                        <li class="nav-item" data-aos="fade-down" data-aos-delay="300">
+                            <a class="nav-link {% if 'blog' in request.path %}active{% endif %}" href="{% url 'blog' %}">Blog</a>
+                        </li>
+                        <li class="nav-item" data-aos="fade-down" data-aos-delay="350">
+                            <a class="nav-link btn btn-primary text-white px-4 ms-2 {% if 'contact' in request.path %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="footer-brand mb-4">
+                        <img src="{% static 'images/logo.png' %}" alt="Consulting Firm Logo" height="40">
+                    </div>
+                    <p class="footer-description">Consultanță profesională care ajută afacerile să transforme provocările în oportunități.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 offset-md-1" data-aos="fade-up" data-aos-delay="100">
+                    <h5>Link-uri Rapide</h5>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'service_list' %}">Servicii</a></li>
+                        <li><a href="{% url 'about' %}">Despre Noi</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <h5>Contactați-ne</h5>
+                    <address class="contact-info">
+                        <div class="d-flex mb-3">
+                            <div class="icon-wrapper me-3">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <p class="mb-0">123 Business Avenue<br>Suite 200<br>New York, NY 10001</p>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <div class="icon-wrapper me-3">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <p class="mb-0">(123) 456-7890</p>
+                        </div>
+                        <div class="d-flex">
+                            <div class="icon-wrapper me-3">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <p class="mb-0">info@consultingfirm.com</p>
+                        </div>
+                    </address>
+                </div>
+            </div>
+            <hr class="divider my-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="copyright mb-0">&copy; {% now "Y" %} Consulting Firm. Toate drepturile rezervate.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <ul class="footer-legal list-inline mb-0">
+                        <li class="list-inline-item"><a href="#">Termeni și Condiții</a></li>
+                        <li class="list-inline-item"><a href="#">Politica de Confidențialitate</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-banner hidden">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <p class="mb-3 mb-md-0">Folosim cookie-uri pentru a îmbunătăți experiența dvs. pe site-ul nostru. Continuând navigarea, sunteți de acord cu <a href="#" class="text-primary">Politica noastră de Confidențialitate</a>.</p>
+                <div class="cookie-buttons">
+                    <button id="cookie-accept" class="btn btn-primary">Accept</button>
+                    <button id="cookie-settings" class="btn btn-outline-secondary">Setări Cookie</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top-btn" title="Înapoi la început"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="{% static 'js/main.js' %}"></script>
+    
+    <!-- Cookie Consent Script -->
+    <script>
+        // Check if user has already given consent
+        if (!localStorage.getItem('cookieConsent')) {
+            document.getElementById('cookie-consent').classList.remove('hidden');
+        }
+        
+        // Handle accept button
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'true');
+            document.getElementById('cookie-consent').classList.add('hidden');
+        });
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

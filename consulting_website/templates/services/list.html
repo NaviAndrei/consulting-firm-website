@@ -1,0 +1,128 @@
+<!-- templates/services/list.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Services - Consulting Firm{% endblock %}
+
+{% block meta_description %}Explore our comprehensive range of consulting services designed to help your business grow and transform challenges into opportunities.{% endblock %}
+
+{% block content %}
+    <!-- Page Header -->
+    <section class="page-header bg-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 fw-bold">Our Services</h1>
+                    <p class="lead">Comprehensive solutions to transform your business</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview Section -->
+    <section class="services-overview py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <p>Our consulting services are designed to address your most pressing business challenges. We work collaboratively with your team to identify opportunities and implement effective solutions that drive measurable results.</p>
+                </div>
+            </div>
+            
+            <!-- Services List -->
+            <div class="row">
+                {% for service in services %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="service-icon mb-3">
+                                {% if service.icon %}
+                                <img src="{{ service.icon.url }}" alt="{{ service.title }} icon" height="50">
+                                {% else %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-gear text-primary" viewBox="0 0 16 16">
+                                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                                </svg>
+                                {% endif %}
+                            </div>
+                            <h3 class="card-title h4 mb-3">{{ service.title }}</h3>
+                            <p class="card-text mb-4">{{ service.short_description }}</p>
+                            <a href="{% url 'service_detail' service.slug %}" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center">
+                    <p>No services available at this time. Please check back later.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="section-title">Our Consulting Process</h2>
+                    <p class="section-subtitle">How we work with you to deliver exceptional results</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <div class="process-step text-center">
+                        <div class="process-number bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                            <span class="fw-bold">1</span>
+                        </div>
+                        <h3 class="h5 mb-3">Discovery</h3>
+                        <p>We begin by thoroughly understanding your business, challenges, and goals through comprehensive analysis.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <div class="process-step text-center">
+                        <div class="process-number bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                            <span class="fw-bold">2</span>
+                        </div>
+                        <h3 class="h5 mb-3">Strategy</h3>
+                        <p>Our team develops a tailored strategy that addresses your specific needs and aligns with your business objectives.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <div class="process-step text-center">
+                        <div class="process-number bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                            <span class="fw-bold">3</span>
+                        </div>
+                        <h3 class="h5 mb-3">Implementation</h3>
+                        <p>We work alongside your team to implement solutions, providing guidance and support throughout the process.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="process-step text-center">
+                        <div class="process-number bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3">
+                            <span class="fw-bold">4</span>
+                        </div>
+                        <h3 class="h5 mb-3">Results & Review</h3>
+                        <p>We measure results against defined KPIs, make adjustments as needed, and establish long-term success strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h2 class="mb-4">Ready to Transform Your Business?</h2>
+                    <p class="lead mb-4">Schedule a consultation with our experts to discuss your business challenges and how we can help.</p>
+                    <a href="{% url 'contact' %}" class="btn btn-light btn-lg">Contact Us Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

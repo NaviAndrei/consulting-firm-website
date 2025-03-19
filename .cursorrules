@@ -1,0 +1,50 @@
+# Django Corporate Website Code Guidelines
+
+## Django & Python Guidelines
+- Follow PEP 8 style guide for all Python code
+- Use descriptive names for views, models, and functions
+- Implement Django's model-view-template (MVT) pattern consistently
+- Create reusable Django apps for distinct functionality
+- Use Django forms for validation and handling user inputs
+
+## HTML & Templates Guidelines
+- Maintain consistent template inheritance with `{% extends %}` and `{% block %}`
+- Use Bootstrap classes correctly for responsive design
+- Ensure proper semantic HTML5 elements (`header`, `nav`, `section`, `footer`)
+- Follow BEM (Block Element Modifier) naming convention for custom CSS classes
+- Create reusable template components for repeated elements
+
+## JavaScript Practices
+- Use descriptive function names with "handle" prefix for event handlers (e.g., `handleSubmit`)
+- Implement unobtrusive JavaScript that enhances but doesn't replace basic functionality
+- Organize JavaScript code in modular files based on features
+- Follow ES6+ best practices where browser support allows
+- Use proper event delegation for dynamically loaded content
+
+## Database & Models
+- Design normalized database models with appropriate relationships
+- Use descriptive field names and include proper `help_text`
+- Implement Django model validators for data integrity
+- Add `verbose_name` and `verbose_name_plural` to all models
+- Use appropriate field types and constraints
+
+## Accessibility
+- Maintain proper heading hierarchy (h1, h2, h3)
+- Add alt text to all images
+- Ensure color contrast meets WCAG standards
+- Make all interactive elements keyboard accessible
+- Use ARIA attributes where appropriate
+
+## Security Practices
+- Always use Django's CSRF protection on forms
+- Sanitize user inputs to prevent XSS attacks
+- Properly handle file uploads with validation
+- Follow Django's security best practices for authentication
+- Use environment variables for sensitive configuration
+
+## Performance Considerations
+- Implement Django caching for database-intensive operations
+- Optimize and compress static files (CSS, JavaScript, images)
+- Use pagination for long lists of content
+- Implement lazy loading for images and heavy content
+- Monitor and optimize database queries
